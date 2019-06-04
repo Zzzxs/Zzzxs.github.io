@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zzzxs.github.io/"/>
-  <updated>2019-06-03T14:05:00.951Z</updated>
+  <updated>2019-06-04T14:30:26.133Z</updated>
   <id>https://zzzxs.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>我的第一篇博客文章</title>
-    <link href="https://zzzxs.github.io/2019/06/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/"/>
-    <id>https://zzzxs.github.io/2019/06/02/我的第一篇博客文章/</id>
-    <published>2019-06-02T14:44:29.000Z</published>
-    <updated>2019-06-03T14:05:00.951Z</updated>
+    <title>KMP算法详解</title>
+    <link href="https://zzzxs.github.io/2019/06/04/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://zzzxs.github.io/2019/06/04/KMP算法详解/</id>
+    <published>2019-06-04T12:14:32.000Z</published>
+    <updated>2019-06-04T14:30:26.133Z</updated>
     
     <summary type="html">
     
@@ -29,35 +29,14 @@
       
         
         
-          &lt;p&gt;##第一章##&lt;/p&gt;
-&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+          &lt;h1 id=&quot;1-引言&quot;&gt;&lt;a href=&quot;#1-引言&quot; class=&quot;headerlink&quot; title=&quot;1. 引言&quot;&gt;&lt;/a&gt;1.
         
       
     
     </summary>
     
     
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://zzzxs.github.io/2019/06/02/hello-world/"/>
-    <id>https://zzzxs.github.io/2019/06/02/hello-world/</id>
-    <published>2019-06-02T13:57:33.000Z</published>
-    <updated>2019-06-02T13:57:33.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
+      <category term="KMP算法,C++" scheme="https://zzzxs.github.io/tags/KMP%E7%AE%97%E6%B3%95-C/"/>
     
   </entry>
   

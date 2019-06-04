@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="C++,OpenGL">
+  <meta name="keywords" content="KMP算法,C++,">
 
 
 
@@ -88,14 +88,74 @@
 
 
 
-<meta name="keywords" content="C++ OpenGL">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mr.Zhu&#39;s blog">
-<meta property="og:url" content="https://zzzxs.github.io/index.html">
+<meta name="description" content="1. 引言本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于一直以来对KMP的理解始终不够，故才迟迟没有修改本文。KMP本身不复杂，但网上绝大部分的文章（包括本文的2011年版本）把它讲混乱了。下面，咱们从暴力匹配算法讲起，随后阐述KMP的流程 步骤、next 数组的简单求解递推原理代码求解，接着基于next 数组">
+<meta name="keywords" content="KMP算法,C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP算法详解">
+<meta property="og:url" content="https://zzzxs.github.io/2019/06/04/KMP算法详解/index.html">
 <meta property="og:site_name" content="Mr.Zhu&#39;s blog">
+<meta property="og:description" content="1. 引言本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于一直以来对KMP的理解始终不够，故才迟迟没有修改本文。KMP本身不复杂，但网上绝大部分的文章（包括本文的2011年版本）把它讲混乱了。下面，咱们从暴力匹配算法讲起，随后阐述KMP的流程 步骤、next 数组的简单求解递推原理代码求解，接着基于next 数组">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20140723224710203">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213551553">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213602848">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213343578">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213353687">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213631208">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213353687">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223539765">
+<meta property="og:image" content="https://img-blog.csdn.net/20140819173639786">
+<meta property="og:image" content="https://img-blog.csdn.net/20140819173649739">
+<meta property="og:image" content="https://img-blog.csdn.net/20140812223633281">
+<meta property="og:image" content="https://img-blog.csdn.net/20140725231726921">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721222801918">
+<meta property="og:image" content="https://img-blog.csdn.net/20140723224710203">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213602848">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223809617">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223539765">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223823548">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223558140">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223611515">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721230517324">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721230250468">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728110939595">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223809617">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223539765">
+<meta property="og:image" content="https://img-blog.csdn.net/20140729182154066">
+<meta property="og:image" content="https://img-blog.csdn.net/20140729181940812">
+<meta property="og:image" content="https://img-blog.csdn.net/20150812214857858">
+<meta property="og:image" content="https://img-blog.csdn.net/20140809163257703">
+<meta property="og:image" content="https://img-blog.csdn.net/20140812004705968">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721231622000">
+<meta property="og:image" content="https://img-blog.csdn.net/20140723224710203">
+<meta property="og:image" content="https://img-blog.csdn.net/20140726213602848">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223809617">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223539765">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223823548">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223558140">
+<meta property="og:image" content="https://img-blog.csdn.net/20140721223611515">
+<meta property="og:image" content="https://img-blog.csdn.net/20140725232020608">
+<meta property="og:image" content="https://img-blog.csdn.net/20140805003320486">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201106/14/8394323_1308075859Zfue.jpg">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201106/14/8394323_13080758591kyV.jpg">
+<meta property="og:image" content="https://zzzxs.github.io/2019/06/04/KMP算法详解/%22https://img-blog.csdn.net/20140801160510832">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201106/14/8394323_130807585714lW.jpg">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201106/14/8394323_13080758571390.jpg">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201106/14/8394323_1308075857e40u.jpg">
+<meta property="og:image" content="https://img-blog.csdn.net/20140812223633281">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728192101322">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728192109185">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728192118623">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728193254930">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728193420403">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728193428671">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728194226031">
+<meta property="og:image" content="https://img-blog.csdn.net/20140728194006343">
+<meta property="og:updated_time" content="2019-06-04T14:30:26.133Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr.Zhu&#39;s blog">
+<meta name="twitter:title" content="KMP算法详解">
+<meta name="twitter:description" content="1. 引言本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于一直以来对KMP的理解始终不够，故才迟迟没有修改本文。KMP本身不复杂，但网上绝大部分的文章（包括本文的2011年版本）把它讲混乱了。下面，咱们从暴力匹配算法讲起，随后阐述KMP的流程 步骤、next 数组的简单求解递推原理代码求解，接着基于next 数组">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20140723224710203">
 
 
 
@@ -125,13 +185,13 @@
 
 
 
-  <link rel="canonical" href="https://zzzxs.github.io/">
+  <link rel="canonical" href="https://zzzxs.github.io/2019/06/04/KMP算法详解/">
 
 
 
 
 
-  <title>Mr.Zhu's blog</title>
+  <title>KMP算法详解 | Mr.Zhu's blog</title>
   
 
 
@@ -150,8 +210,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -274,9 +333,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -306,9 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/04/KMP算法详解/" itemprop="url">KMP算法详解</a></h1>
+          <h1 class="post-title" itemprop="name headline">KMP算法详解</h1>
         
 
         <div class="post-meta">
@@ -358,9 +415,7 @@
       
 
       
-        
-          
-            <h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h1><p>本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于一直以来对KMP的理解始终不够，故才迟迟没有修改本文。<br>KMP本身不复杂，但网上绝大部分的文章（包括本文的2011年版本）把它讲混乱了。下面，咱们从暴力匹配算法讲起，随后阐述KMP的流程 步骤、next 数组的简单求解递推原理代码求解，接着基于next 数组匹配，谈到有限状态自动机，next 数组的优化，KMP的时间复杂度分析，最后简要介绍两个KMP的扩展算法。<br>全文力图给你一个最为完整最为清晰的KMP，希望更多的人不再被KMP折磨或纠缠，不再被一些混乱的文章所混乱。有何疑问，欢迎随时留言评论，thanks。 </p>
+        <h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h1><p>本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于一直以来对KMP的理解始终不够，故才迟迟没有修改本文。<br>KMP本身不复杂，但网上绝大部分的文章（包括本文的2011年版本）把它讲混乱了。下面，咱们从暴力匹配算法讲起，随后阐述KMP的流程 步骤、next 数组的简单求解递推原理代码求解，接着基于next 数组匹配，谈到有限状态自动机，next 数组的优化，KMP的时间复杂度分析，最后简要介绍两个KMP的扩展算法。<br>全文力图给你一个最为完整最为清晰的KMP，希望更多的人不再被KMP折磨或纠缠，不再被一些混乱的文章所混乱。有何疑问，欢迎随时留言评论，thanks。 </p>
 <h1 id="2-暴力匹配算法"><a href="#2-暴力匹配算法" class="headerlink" title="2. 暴力匹配算法"></a>2. 暴力匹配算法</h1><p>假设现在我们面临这样一个问题：有一个文本串S，和一个模式串P，现在要查找P在S中的位置，怎么查找呢？<br>如果用暴力匹配的思路，并假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置，则有： </p>
 <ul>
 <li>如果当前字符匹配成功（即S[i] == P[j]），则i++，j++，继续匹配下一个字符； </li>
@@ -521,8 +576,6 @@
 </li>
 </ol>
 
-          
-        
       
     </div>
     
@@ -536,18 +589,43 @@
     
       <div>
         
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
      </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/KMP算法-C/" rel="tag"><i class="fa fa-tag"></i>// Custom styles.
+code {
+    color: #ffefd5;
+    background: #404040;
+    margin: 2px;
+}
+// 大代码块的自定义样式
+.highlight, pre {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+}
+.highlight, code, pre { KMP算法,C++</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -557,10 +635,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -568,6 +647,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -588,8 +671,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -649,6 +741,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-引言"><span class="nav-number">1.</span> <span class="nav-text">1. 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-暴力匹配算法"><span class="nav-number">2.</span> <span class="nav-text">2. 暴力匹配算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-KMP算法"><span class="nav-number">3.</span> <span class="nav-text">3. KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-定义"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-步骤"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-解释"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-寻找最长前缀后缀"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 寻找最长前缀后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-基于《最大长度表》匹配"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 基于《最大长度表》匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-根据《最大长度表》求next-数组"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 根据《最大长度表》求next 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-4-通过代码递推计算next-数组"><span class="nav-number">3.3.4.</span> <span class="nav-text">3.3.4 通过代码递推计算next 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-5-基于《next-数组》匹配"><span class="nav-number">3.3.5.</span> <span class="nav-text">3.3.5 基于《next 数组》匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-6-基于《最大长度表》与基于《next-数组》等价"><span class="nav-number">3.3.6.</span> <span class="nav-text">3.3.6 基于《最大长度表》与基于《next 数组》等价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-7-Next-数组与有限状态自动机"><span class="nav-number">3.3.7.</span> <span class="nav-text">3.3.7 Next 数组与有限状态自动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-8-Next-数组的优化"><span class="nav-number">3.3.8.</span> <span class="nav-text">3.3.8 Next 数组的优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-KMP的时间复杂度分析"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 KMP的时间复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-扩展1：BM算法"><span class="nav-number">4.</span> <span class="nav-text">4. 扩展1：BM算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-扩展2：Sunday算法"><span class="nav-number">5.</span> <span class="nav-text">5. 扩展2：Sunday算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-参考文献"><span class="nav-number">6.</span> <span class="nav-text">6. 参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -804,6 +912,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
